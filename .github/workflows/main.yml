@@ -49,9 +49,26 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_SECRETS_USER }}
           password: ${{ secrets.DOCKER_SECRETS_PASS }}
-          
-      - name: Build and push
-        uses: docker/build-push-action@v5
+
+      - name: Build Docker
+        run: |
+          dcoker build --tag iliberona/devsecops:latest .
+
+      - name: Image Security
+        uses: aquasecurity/trivy-action@mastyer
         with:
-          push: true
-          tags: iliberona/devsecops:latest
+          image-ref: 'iliberona/devsecops:latest'
+          format: 'table'
+          exit-code: 1
+          
+      - name: Build Docker
+        run: |
+          dcoker push iliberona/devsecops 
+
+      
+      
+      #- name: Build and push
+        #uses: docker/build-push-action@v5
+        #with:
+         #push: true
+         #tags: iliberona/devsecops:latest
