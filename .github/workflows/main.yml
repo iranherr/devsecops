@@ -52,7 +52,7 @@ jobs:
 
       - name: Build Docker
         run: |
-          dcoker build --tag iliberona/devsecops:latest .
+          docker build --tag iliberona/devsecops:latest .
 
       - name: Image Security
         uses: aquasecurity/trivy-action@master
