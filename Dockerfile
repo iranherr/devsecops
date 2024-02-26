@@ -2,14 +2,6 @@ FROM node:16.17.0-alpine as builder
 WORKDIR /app
 RUN touch ./yarn.lock
 COPY ./package.json .
-
-RUN \
-  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
-  elif [ -f package-lock.json ]; then npm ci; \
-  elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i --frozen-lockfile; \
-  else echo "Lockfile not found." && exit 1; \
-  fi
-
 RUN yarn install
 COPY . .
 ARG TMDB_V3_API_KEY
