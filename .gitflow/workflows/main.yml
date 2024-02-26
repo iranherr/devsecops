@@ -1,4 +1,4 @@
-run-name: Workflow Análisis 
+run-name: Workflow 
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
     types: [opened, synchronize, reopened] 
 jobs:
   SAST:
-    uses: ./.github/workflows/ci/templateSAST.yml
+    uses: ./.github/workflows/ci/templateSast.yml
     with:
       run-name: "Análisis de Código"
     secrets: inherit 
