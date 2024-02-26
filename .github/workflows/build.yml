@@ -1,0 +1,14 @@
+run-name: Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened] 
+jobs:
+  SAST:
+    uses: ./.github/workflows/template-sast.yml
+    with:
+      run-name: "Analisis"
+    secrets: inherit
