@@ -63,7 +63,7 @@ jobs:
           
       - name: Build Docker
         run: |
-          dcoker push iliberona/devsecops 
+          docker push iliberona/devsecops 
 
       
       
