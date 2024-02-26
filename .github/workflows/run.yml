@@ -19,6 +19,7 @@ jobs:
               SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     
     DependencyCheck:
+      needs: AnalisisSAST
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v4
@@ -39,6 +40,7 @@ jobs:
              path: ${{github.workspace}}/reports
              
     Docker_buid_push:
+      needs: DependencyCheck
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v4
