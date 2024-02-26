@@ -1,5 +1,6 @@
 FROM node:16.17.0-alpine as builder
 WORKDIR /app
+RUN touch yarn.lock
 COPY ./package.json .
 COPY ./yarn.lock .
 RUN yarn install
